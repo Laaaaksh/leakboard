@@ -29,12 +29,12 @@ make test
 
 ## Contribution workflow
 
-The `main` branch is protected: every change lands through a pull request, required
+The `master` branch is protected: every change lands through a pull request, required
 status checks must pass, and protection is enforced for everyone — including the
-maintainer. There are no direct pushes to `main`.
+maintainer. There are no direct pushes to `master`.
 
 1. Fork the repo on GitHub, then clone your fork (command above).
-2. Create a descriptively named feature branch from `main`.
+2. Create a descriptively named feature branch from `master`.
 3. Make your changes as small, focused commits, each leaving the tree buildable.
 4. Run `make lint` and `make test` — both must pass. Postgres-backed tests in
    `internal/store` and `internal/api` are skipped automatically if
@@ -48,7 +48,7 @@ maintainer. There are no direct pushes to `main`.
    resulting change to `internal/webui/dist` — it's a real, committed build (not a
    placeholder) so `go build` alone produces a working dashboard, and CI fails if it's stale.
 7. Push the branch to your fork.
-8. Open a pull request against `main` here.
+8. Open a pull request against `master` here.
 
 A PR can merge only when every required check passes (`Test`, `Lint`) and all
 conversation threads are resolved.
@@ -65,7 +65,7 @@ Releases are cut by pushing a tag; GitHub Actions does the rest
    existing sections, and update the compare links at the bottom of the file —
    add `[x.y.z]: https://github.com/Laaaaksh/leakboard/compare/v<prev>...vx.y.z`
    and repoint `[Unreleased]` at `compare/vx.y.z...HEAD`.
-3. Land those changelog edits on `main` through a pull request (see the
+3. Land those changelog edits on `master` through a pull request (see the
    contribution workflow above), then tag and push:
 
    ```bash

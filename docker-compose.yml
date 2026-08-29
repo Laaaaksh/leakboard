@@ -2,7 +2,7 @@ services:
   leakboard:
     build: .
     ports:
-      - "8080:8080"
+      - "${LEAKBOARD_PORT:-8080}:8080"
     environment:
       LEAKBOARD_DATABASE_URL: postgres://leakboard:leakboard@postgres:5432/leakboard?sslmode=disable
       # Generate your own: `openssl rand -hex 32`. This default is only fine

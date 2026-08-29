@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
 
 permissions:
   contents: read
@@ -119,7 +119,7 @@ jobs:
           version: latest
 
   graph:
-    # Required by branch protection on `main`. Dependabot's own
+    # Required by branch protection on `master`. Dependabot's own
     # update-go_modules-graph check only fires on pushes to the default branch,
     # so pull requests would wait forever for it to report; this job provides
     # that status on PR heads and verifies the module graph is consistent.
