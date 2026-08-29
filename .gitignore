@@ -1,0 +1,23 @@
+# Build output
+/leakboard
+dist/
+!internal/webui/dist/
+
+# Go
+*.test
+*.out
+vendor/
+
+# Runtime data (repo mirrors, local Postgres volumes)
+data/
+
+# macOS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Config (local dev)
+.env

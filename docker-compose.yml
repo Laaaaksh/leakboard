@@ -1,0 +1,36 @@
+services:
+  leakboard:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      LEAKBOARD_DATABASE_URL: postgres://leakboard:leakboard@postgres:5432/leakboard?sslmode=disable
+      # Generate your own: `openssl rand -hex 32`. This default is only fine
+      # for a local trial; set your own before exposing this beyond localhost.
+      LEAKBOARD_SESSION_SECRET: ${LEAKBOARD_SESSION_SECRET:-change-me-to-a-random-64-char-hex-string}
+      LEAKBOARD_BASE_URL: ${LEAKBOARD_BASE_URL:-http://localhost:8080}
+    volumes:
+      - repo_data:/home/leakboard/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: leakboard
+      POSTGRES_PASSWORD: leakboard
+      POSTGRES_DB: leakboard
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U leakboard"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  repo_data:

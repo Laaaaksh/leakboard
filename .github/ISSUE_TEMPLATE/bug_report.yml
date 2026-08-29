@@ -1,0 +1,48 @@
+name: Bug report
+description: Report a problem with Leakboard
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: |
+        Steps to reproduce the problem, and what you expected vs what actually happened.
+      placeholder: |
+        1. Connect a GitHub org
+        2. Trigger a scan
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Leakboard version
+      description: The image tag or commit SHA you're running.
+      placeholder: "v0.1.0, or ghcr.io/laaaaksh/leakboard:latest@sha256:..."
+    validations:
+      required: true
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: How is it deployed?
+      options:
+        - Docker Compose (docker-compose.yml from this repo)
+        - Docker (custom setup)
+        - Built from source / bare binary
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Postgres version, OS/architecture, and gitleaks version (`gitleaks version`) if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Optional but helpful — paste `docker compose logs leakboard` output around the failure.
+    validations:
+      required: false
