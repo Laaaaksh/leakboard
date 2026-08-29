@@ -57,6 +57,11 @@ while the pre-existing findings underneath do not re-trigger anything.*
   Go binary directly instead of Docker (the Docker image already includes it).
 - Enough disk for a bare mirror clone of every repo you track — Leakboard keeps a local
   git mirror per repo to scan incrementally, at roughly the size of that repo's own `.git`.
+- Node 20+ — **only** if you build from source with `make build`, which builds the dashboard
+  frontend before the Go binary. Skip it entirely by running `go build ./cmd/leakboard`
+  instead: `internal/webui/dist` ships a real, committed frontend build, so the plain Go build
+  produces a working dashboard with no Node install at all. Docker Compose needs no Node
+  either way — the multi-stage `Dockerfile` builds the frontend for you.
 
 ## Install
 
@@ -69,14 +74,18 @@ export LEAKBOARD_SESSION_SECRET="$(openssl rand -hex 32)"
 docker compose up -d
 ```
 
-Leakboard is now on `http://localhost:8080`. The first visit creates the single admin account
-for this instance.
+The first `up -d` builds the image from scratch (Go build, gitleaks fetch, Debian package
+installs) and can take a few minutes with no progress output — it hasn't hung. Leakboard is
+then on `http://localhost:8080`; the first visit creates the single admin account for this
+instance. Something else already listening on 8080? Set `LEAKBOARD_PORT` before bringing it up
+(e.g. `export LEAKBOARD_PORT=8081`) to change the host-side port without editing
+`docker-compose.yml`.
 
-To build and run from source instead:
+To build and run from source instead (no Docker, no Node — see Requirements above):
 
 ```bash
 go mod download
-make build            # builds the dashboard frontend, then the Go binary
+go build -o leakboard ./cmd/leakboard
 export LEAKBOARD_DATABASE_URL="postgres://user:pass@localhost:5432/leakboard?sslmode=disable"
 export LEAKBOARD_SESSION_SECRET="$(openssl rand -hex 32)"
 ./leakboard
@@ -97,6 +106,11 @@ export LEAKBOARD_SESSION_SECRET="$(openssl rand -hex 32)"
 5. Add a Slack, Discord, or generic webhook under **Settings** to get paged the moment a new
    secret is introduced.
 
+<p align="center">
+  <img src="docs/assets/dashboard-screenshot.png" alt="Leakboard Findings page showing findings by status with rule, repo, location, and first-seen columns" width="420">
+  <img src="docs/assets/finding-detail-screenshot.png" alt="Leakboard finding detail showing file, line, commit, and a masked secret preview" width="420">
+</p>
+
 ## Configuration
 
 Leakboard is configured entirely by environment variables — see `docker-compose.yml` for the
@@ -111,6 +125,10 @@ defaults Docker Compose sets.
 | `LEAKBOARD_WORKDIR` | no | `./data/repos` | Where repo mirror clones are stored |
 | `LEAKBOARD_GITLEAKS_PATH` | no | `gitleaks` | Path to the gitleaks binary |
 | `LEAKBOARD_SCAN_INTERVAL_SECONDS` | no | `300` | How often the scheduler checks for repos due a scan |
+
+`LEAKBOARD_PORT` is a separate, Compose-only variable (not read by the binary itself) that
+picks the **host-side** port `docker-compose.yml` publishes; the app inside the container
+always listens on `LEAKBOARD_ADDR`.
 
 **Known limitation:** incremental scans compare every ref currently in the repo's mirror
 against the ref tips seen at the last successful scan, so new commits on any branch — including
@@ -128,6 +146,10 @@ Notable changes per release live in [CHANGELOG.md](CHANGELOG.md).
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Note: a bare `go test ./...` silently skips the Postgres-backed suites in `internal/store` and
+`internal/api` — the ones covering dedup, auth, and the allowlist — unless `TEST_DATABASE_URL`
+is set. See [CONTRIBUTING.md](CONTRIBUTING.md#contribution-workflow) for how to set it.
 
 ## Security
 

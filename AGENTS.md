@@ -15,7 +15,7 @@ This file is the project's committed home for project-intrinsic agent knowledge:
   without a second query.
 - Incremental scanning diffs the *current* ref tips against the ref tips stored at the last
   successful scan (`gitutil.BuildIncrementalLogOpts`), not just the default branch — a secret
-  on any branch is caught on the next scan, not only ones merged to main.
+  on any branch is caught on the next scan, not only ones merged to `master`.
 - The React frontend is embedded via `internal/webui` (`go:embed`), and the **real built
   output is committed** to `internal/webui/dist` — not a placeholder — so `go build`/`go
   install` produce a working dashboard with no Node install required. Any PR touching `web/`
