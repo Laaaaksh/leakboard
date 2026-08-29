@@ -28,7 +28,7 @@ jobs:
         id: notes
         run: scripts/release_notes.sh "$RUNNER_TEMP/release-notes.md" "${GITHUB_REF_NAME#v}"
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v7
         with:
           node-version: 20
           cache: npm
