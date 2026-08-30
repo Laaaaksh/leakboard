@@ -17,11 +17,23 @@ something genuinely new shows up.
 [![Go](https://img.shields.io/badge/go-1.26+-00ADD8?logo=go&logoColor=white)](go.mod)
 [![Docker](https://img.shields.io/badge/docker-compose-2496ED?logo=docker&logoColor=white)](docker-compose.yml)
 
-**[Install](#install) • [Usage](#usage) • [Configuration](#configuration) • [Changelog](CHANGELOG.md) • [Contributing](CONTRIBUTING.md) • [License](#license)**
+**[Demo](#demo) • [Install](#install) • [Usage](#usage) • [Configuration](#configuration) • [Changelog](CHANGELOG.md) • [Contributing](CONTRIBUTING.md) • [License](#license)**
 
 **[Code of conduct](CODE_OF_CONDUCT.md) • [Security](SECURITY.md)**
 
 </div>
+
+## Demo
+
+<p align="center">
+  <img src="docs/assets/demo.gif" alt="Leakboard demo" width="860">
+</p>
+
+A real Leakboard instance: a repo with a couple of planted fake credentials gets tracked and
+scanned, the findings land with file/line/rule attribution, one gets acknowledged as a true
+positive and one dismissed as a false positive, and an allowlist rule gets added live. Full
+quality: [docs/assets/demo.mp4](docs/assets/demo.mp4). Re-record it yourself with `make demo`
+(see [scripts/record-demo](scripts/record-demo/README.md)).
 
 ## What it does
 
@@ -38,10 +50,6 @@ something genuinely new shows up.
   suppressed everywhere, not re-triaged per repo.
 - Ships as one Go binary with the dashboard frontend embedded, backed by Postgres — no
   scanning-as-a-service, no data leaving your infrastructure.
-
-<p align="center">
-  <img src="docs/assets/leakboard-demo.gif" alt="Leakboard: a new secret is committed to a tracked repo, a scan is triggered from the dashboard, and the finding count updates live with the new leak at the top" width="860">
-</p>
 
 *Real capture: a token is committed to a tracked repo, "Scan now" is clicked from the
 dashboard, and the new finding appears at the top of the findings table seconds later —

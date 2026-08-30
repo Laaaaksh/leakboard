@@ -1,0 +1,15 @@
+{
+  "name": "leakboard-record-demo",
+  "private": true,
+  "type": "module",
+  "description": "Dev-only recorder that drives a real Leakboard instance through Playwright and captures the demo walkthrough used in docs/assets. Not part of the product build.",
+  "scripts": {
+    "seed": "node seed.mjs",
+    "record": "node record.mjs",
+    "convert": "bash convert.sh",
+    "demo": "npm run seed && npm run record && npm run convert"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}
