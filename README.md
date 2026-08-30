@@ -130,14 +130,24 @@ defaults Docker Compose sets.
 picks the **host-side** port `docker-compose.yml` publishes; the app inside the container
 always listens on `LEAKBOARD_ADDR`.
 
-**Known limitation:** incremental scans compare every ref currently in the repo's mirror
-against the ref tips seen at the last successful scan, so new commits on any branch — including
-a branch created after the baseline — are caught, not just the default branch. What incremental
-scans do *not* do is re-check history that was already scanned once for a rule added to Gitleaks
-after the fact, or a new org-wide allowlist rule you add later. Adding an allowlist rule only
-affects future findings; it does not retroactively remove findings already in the dashboard, and
-a manual "Scan now" only scans new commits, never full history again. Delete and re-add a repo
-if you need a fresh full-history baseline scan.
+## Limits
+
+Leakboard is young and scoped narrow on purpose. Plainly, as of today:
+
+- **One admin account per instance.** There's no multi-user login or role-based access —
+  whoever completes first-run setup can see every finding and every revealed secret value.
+- **GitHub only.** No GitLab or Bitbucket support; both the org-connect flow and "Add a single
+  repo" expect a GitHub-hosted remote.
+- **Detects and alerts, doesn't remediate.** Leakboard finds a leaked secret and tells you; it
+  does not rotate or revoke credentials with AWS, Stripe, or any other provider.
+- **Allowlist and rule changes aren't retroactive.** Incremental scans compare every ref
+  currently in a repo's mirror against the ref tips seen at the last successful scan, so new
+  commits on any branch — not just the default one — are caught. What they do *not* do is
+  re-check history already scanned once for a Gitleaks rule added after the fact, or a new
+  org-wide allowlist rule you add later — an allowlist rule only suppresses future findings, it
+  never removes one already in the dashboard. A manual "Scan now" only scans commits since the
+  last successful scan, never full history again; delete and re-add a repo for a fresh
+  full-history baseline.
 
 ## Changelog
 
