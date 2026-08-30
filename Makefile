@@ -1,4 +1,4 @@
-.PHONY: build build-frontend run test lint tidy fmt clean
+.PHONY: build build-frontend run test lint tidy fmt clean demo
 
 BINARY := leakboard
 MODULE := github.com/Laaaaksh/leakboard
@@ -38,3 +38,8 @@ clean:
 	rm -f $(BINARY)
 	rm -rf web/dist
 	go clean -testcache
+
+# Boots a fresh stack, seeds a demo repo, records the walkthrough, and
+# converts it into docs/assets/. See scripts/record-demo/README.md.
+demo:
+	./scripts/record-demo/run.sh

@@ -40,6 +40,22 @@ This file is the project's committed home for project-intrinsic agent knowledge:
   initial ownership from the image path it overlays, so skipping this makes every scan fail
   with a permission error against a completely empty-looking volume.
 
+## Demo recording
+
+- `make demo` (`scripts/record-demo/`) boots a fresh stack, seeds a real git fixture repo,
+  drives the actual UI with Playwright, and produces `docs/assets/demo.mp4`/`demo.gif`. It's a
+  dev-only Node package (own `package.json`) never imported by the product build. See
+  `scripts/record-demo/README.md`.
+- The seed repo is made reachable to the container via `docker compose cp` into
+  `/home/leakboard/data/seed-repo` + a root `chown` to the `leakboard` user, then tracked
+  through the real "Add a single repo" UI as `file:///home/leakboard/data/seed-repo` —
+  Leakboard's `gitutil` just shells out to `git clone --mirror`, so any reachable clone URL
+  works and no GitHub token or network access is needed for the demo.
+- Gitleaks' default config allowlists the literal AWS docs placeholder credential (anything
+  matching `.+EXAMPLE$`), so a fixture using that exact well-known value won't be detected —
+  `fixture.mjs` uses a different fake key that still matches the `AKIA` + 16-char
+  `[A-Z2-7]` rule shape.
+
 ## Maintaining this file
 
 Keep this file for knowledge useful to almost every future agent session in this project.
