@@ -9,11 +9,11 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/Laaaaksh/leakboard/internal/alert"
-	"github.com/Laaaaksh/leakboard/internal/githubapi"
-	"github.com/Laaaaksh/leakboard/internal/gitleaks"
-	"github.com/Laaaaksh/leakboard/internal/gitutil"
-	"github.com/Laaaaksh/leakboard/internal/store"
+	"github.com/attentionfs/leakboard/internal/alert"
+	"github.com/attentionfs/leakboard/internal/githubapi"
+	"github.com/attentionfs/leakboard/internal/gitleaks"
+	"github.com/attentionfs/leakboard/internal/gitutil"
+	"github.com/attentionfs/leakboard/internal/store"
 )
 
 // Scanner scans repos and dispatches alerts for newly discovered findings.

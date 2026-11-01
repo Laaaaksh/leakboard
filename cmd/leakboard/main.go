@@ -13,13 +13,13 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Laaaaksh/leakboard/internal/alert"
-	"github.com/Laaaaksh/leakboard/internal/api"
-	"github.com/Laaaaksh/leakboard/internal/config"
-	"github.com/Laaaaksh/leakboard/internal/gitleaks"
-	"github.com/Laaaaksh/leakboard/internal/scanner"
-	"github.com/Laaaaksh/leakboard/internal/store"
-	"github.com/Laaaaksh/leakboard/internal/webui"
+	"github.com/attentionfs/leakboard/internal/alert"
+	"github.com/attentionfs/leakboard/internal/api"
+	"github.com/attentionfs/leakboard/internal/config"
+	"github.com/attentionfs/leakboard/internal/gitleaks"
+	"github.com/attentionfs/leakboard/internal/scanner"
+	"github.com/attentionfs/leakboard/internal/store"
+	"github.com/attentionfs/leakboard/internal/webui"
 )
 
 const shutdownTimeout = 10 * time.Second

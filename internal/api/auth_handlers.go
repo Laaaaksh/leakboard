@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Laaaaksh/leakboard/internal/auth"
-	"github.com/Laaaaksh/leakboard/internal/store"
+	"github.com/attentionfs/leakboard/internal/auth"
+	"github.com/attentionfs/leakboard/internal/store"
 )
 
 type credentials struct {

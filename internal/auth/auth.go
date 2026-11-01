@@ -14,7 +14,7 @@ import (
 
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/Laaaaksh/leakboard/internal/store"
+	"github.com/attentionfs/leakboard/internal/store"
 )
 
 // CookieName is the session cookie set on login.

@@ -4,8 +4,8 @@ import (
 	"path"
 	"regexp"
 
-	"github.com/Laaaaksh/leakboard/internal/gitleaks"
-	"github.com/Laaaaksh/leakboard/internal/store"
+	"github.com/attentionfs/leakboard/internal/gitleaks"
+	"github.com/attentionfs/leakboard/internal/store"
 )
 
 // FilterAllowlisted drops findings matched by a rule+path or regex allowlist

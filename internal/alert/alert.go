@@ -10,7 +10,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Laaaaksh/leakboard/internal/store"
+	"github.com/attentionfs/leakboard/internal/store"
 )
 
 // Notification is the information a webhook payload needs about a new finding.

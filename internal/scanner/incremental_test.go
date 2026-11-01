@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/Laaaaksh/leakboard/internal/gitleaks"
-	"github.com/Laaaaksh/leakboard/internal/gitutil"
+	"github.com/attentionfs/leakboard/internal/gitleaks"
+	"github.com/attentionfs/leakboard/internal/gitutil"
 )
 
 // TestIncrementalScan_OnlyReportsNewCommits exercises the real gitutil +

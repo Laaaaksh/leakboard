@@ -1,7 +1,7 @@
 .PHONY: build build-frontend run test lint tidy fmt clean demo
 
 BINARY := leakboard
-MODULE := github.com/Laaaaksh/leakboard
+MODULE := github.com/attentionfs/leakboard
 
 build: build-frontend
 	go build -o $(BINARY) ./cmd/leakboard

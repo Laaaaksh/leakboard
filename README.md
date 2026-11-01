@@ -8,11 +8,11 @@ on a schedule across every repo in your GitHub org, deduplicates findings so you
 re-alerted on the same leaked secret twice, and pages Slack, Discord, or a webhook only when
 something genuinely new shows up.
 
-[![Star this repo](https://img.shields.io/github/stars/Laaaaksh/leakboard?style=for-the-badge&logo=github&label=star%20this%20repo&color=yellow)](https://github.com/Laaaaksh/leakboard/stargazers)
+[![Star this repo](https://img.shields.io/github/stars/attentionfs/leakboard?style=for-the-badge&logo=github&label=star%20this%20repo&color=yellow)](https://github.com/attentionfs/leakboard/stargazers)
 [![Built on Gitleaks](https://img.shields.io/badge/built_on-Gitleaks-00ADD8?style=for-the-badge&logo=git&logoColor=white)](https://github.com/gitleaks/gitleaks)
 
-[![CI](https://github.com/Laaaaksh/leakboard/actions/workflows/ci.yml/badge.svg)](https://github.com/Laaaaksh/leakboard/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/Laaaaksh/leakboard?color=green&display_name=tag)](https://github.com/Laaaaksh/leakboard/releases)
+[![CI](https://github.com/attentionfs/leakboard/actions/workflows/ci.yml/badge.svg)](https://github.com/attentionfs/leakboard/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/attentionfs/leakboard?color=green&display_name=tag)](https://github.com/attentionfs/leakboard/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
 [![Go](https://img.shields.io/badge/go-1.26+-00ADD8?logo=go&logoColor=white)](go.mod)
 [![Docker](https://img.shields.io/badge/docker-compose-2496ED?logo=docker&logoColor=white)](docker-compose.yml)
@@ -76,7 +76,7 @@ while the pre-existing findings underneath do not re-trigger anything.*
 The fastest path is Docker Compose, which also runs Postgres for you:
 
 ```bash
-git clone https://github.com/Laaaaksh/leakboard.git
+git clone https://github.com/attentionfs/leakboard.git
 cd leakboard
 export LEAKBOARD_SESSION_SECRET="$(openssl rand -hex 32)"
 docker compose up -d
@@ -176,7 +176,7 @@ Found a security issue? Please report it privately — see [SECURITY.md](SECURIT
 ## Star this repo
 
 If Leakboard saves you from paying per-seat for something two free CLIs already do most of,
-[leave a star](https://github.com/Laaaaksh/leakboard/stargazers) — it helps other people find it.
+[leave a star](https://github.com/attentionfs/leakboard/stargazers) — it helps other people find it.
 
 ## License
 

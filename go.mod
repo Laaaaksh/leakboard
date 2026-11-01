@@ -1,4 +1,4 @@
-module github.com/Laaaaksh/leakboard
+module github.com/attentionfs/leakboard
 
 go 1.26.5
 

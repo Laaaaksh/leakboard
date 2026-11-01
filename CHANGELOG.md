@@ -1,7 +1,7 @@
 # Changelog
 
 All notable changes to Leakboard are documented in this file. Released sections
-mirror the notes on the [GitHub Releases page](https://github.com/Laaaaksh/leakboard/releases),
+mirror the notes on the [GitHub Releases page](https://github.com/attentionfs/leakboard/releases),
 condensed into user-facing terms. Format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 

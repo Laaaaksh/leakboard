@@ -8,11 +8,11 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/Laaaaksh/leakboard/internal/alert"
-	"github.com/Laaaaksh/leakboard/internal/auth"
-	"github.com/Laaaaksh/leakboard/internal/gitleaks"
-	"github.com/Laaaaksh/leakboard/internal/scanner"
-	"github.com/Laaaaksh/leakboard/internal/store"
+	"github.com/attentionfs/leakboard/internal/alert"
+	"github.com/attentionfs/leakboard/internal/auth"
+	"github.com/attentionfs/leakboard/internal/gitleaks"
+	"github.com/attentionfs/leakboard/internal/scanner"
+	"github.com/attentionfs/leakboard/internal/store"
 )
 
 // Server holds the dependencies every HTTP handler needs.
